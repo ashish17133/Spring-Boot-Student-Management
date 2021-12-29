@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org/">
+<head>
+    <div th:replace="common :: head"></div>
+</head>
+
+<body>
+<!--Main Navigation-->
+<div th:replace="common :: examHeader"></div>
+
+<!--Main Navigation-->
+
+<!--Main layout-->
+<main style="margin-top: 58px">
+    <div class="container pt-4">
+        <section>
+        <div class="row">
+      
+        <h4>Total result Count:<span class="text-warning" th:text="${resultCount}"></span></h4>
+		
+		
+        </div>
+            <div class="row">
+                <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                <a th:href="@{/result/entry}">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between px-md-1">
+                                <div>
+                             
+                                    <p class="mb-0">Enter exam result</p>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fas fa-user text-info fa-3x"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                <a th:href="@{/result/view/all}"
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between px-md-1">
+                                <div>
+                             
+                                    <p class="mb-0">Show all results</p>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fas fa-users text-alert fa-3x"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                
+                <div class="col-xl-3 col-sm-6 col-12 mb-4">
+                <a th:href="@{/result/show/individual}"
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between px-md-1">
+                                <div>
+                                    
+                                    <p class="mb-0">Show Individual Exam Results</p>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fas fa-graduation-cap text-warning fa-3x"></i>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    </a>
+                </div>
+            </div>
+
+        </section>
+
+
+    </div>
+</main>
+<!--Main layout-->
+
+<div th:replace="common :: footer"></div>
+
+
+</body>
+</html>

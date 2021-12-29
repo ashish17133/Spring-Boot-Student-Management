@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Management System</title>
+    <!-- Font Awesome -->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+            rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+            rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.css"
+            rel="stylesheet"
+    />
+    <style>
+        body{
+            background-color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+<!--Main Navigation-->
+<header>
+    <div class="container  d-flex justify-content-center align-items-center mt-5">
+        <h2 class="text-primary">Student Management System</h2>
+    </div>
+
+    <!-- Background image -->
+    <div id="intro">
+        <div class="mask d-flex align-items-center h-100">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-5 col-md-8">
+                        <form th:action="@{/login}" th:object ="${user}" method="post" class="bg-white rounded shadow-5-strong p-5">
+
+                            <div th:text="${error}" class="text-danger text-center mb-5"></div>
+
+                            <!-- Email input -->
+                            <div class="form-outline mb-4">
+                                <input type="email" id="form1Example1" th:field="*{email}" class="form-control" />
+                                <label class="form-label" for="form1Example1">Email address</label>
+                            </div>
+
+                            <!-- Password input -->
+                            <div class="form-outline mb-4">
+                                <input type="password" id="form1Example2" th:field="*{password}" class="form-control" />
+                                <label class="form-label" for="form1Example2">Password</label>
+                            </div>
+
+                            <!-- 2 column grid layout for inline styling -->
+                            <div class="row mb-4">
+                                <div class="col d-flex justify-content-center">
+                                    <!-- Checkbox -->
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
+                                        <label class="form-check-label" for="form1Example3">
+                                            Remember me
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col text-center">
+                                    <!-- Simple link -->
+                                    <a href="#!">Forgot password?</a>
+                                </div>
+                            </div>
+
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Background image -->
+</header>
+<!--Main Navigation-->
+
+<!-- MDB -->
+<script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.1/mdb.min.js"
+></script>
+</body>
+</html>
