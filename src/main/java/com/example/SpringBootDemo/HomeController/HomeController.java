@@ -322,6 +322,8 @@ public class HomeController {
 		model.addAttribute("science",science);
 		model.addAttribute("english",english);
 		model.addAttribute("computer",computer);
+		model.addAttribute("total", math+english+science+computer);
+		model.addAttribute("percentage",(math+english+science+computer)/4.0);
 		}else {
 			model.addAttribute("error","No data found for given id");
 		}
