@@ -7,8 +7,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.apache.catalina.UserDatabase;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
+//import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,8 @@ import com.example.SpringBootDemo.Repo.Result;
 import com.example.SpringBootDemo.Repo.STUDENT;
 import com.example.SpringBootDemo.Repo.SUBDATABASE;
 import com.example.SpringBootDemo.Repo.Subject;
+import com.example.SpringBootDemo.Repo.USERDATABASE;
+import com.example.SpringBootDemo.Repo.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
@@ -36,6 +39,8 @@ public class HomeController {
 	SUBDATABASE subdatabase;
 	@Autowired
 	RESULTDATABASE resultdatabase;
+	@Autowired
+	USERDATABASE userDatabase;
 	
 	
 	@RequestMapping("/")
@@ -53,9 +58,12 @@ public class HomeController {
 	String validateUser(User user,Model model) {
 		System.out.println(user.getName());
 		System.out.println(user.getPassword());
+		//System.out.println(user.getRoles());
 		String name=user.getName();
 		String password=user.getPassword();
-		if(user.getName().equalsIgnoreCase("gsd")&&user.getPassword().equals("123")){
+		System.out.println(userDatabase.findAll().toString());
+		System.out.println(userDatabase.findById(name).toString());
+		if(user.getName().equalsIgnoreCase("gsd")&&user.getPassword().equals("123")||!userDatabase.findById(name).isEmpty()){
 			return "redirect:/dashboard";
 		}
 		model.addAttribute("error","Either username or password");
@@ -362,6 +370,26 @@ public class HomeController {
 		
 		return 0;
 	}
+
+	@RequestMapping("/signup")
+	String signupUser(User user,Model model) {
+		System.out.println(user.getName()+"  "+user.getEmailId()+" "+user.getPassword());
+		System.out.println("Signup Test");
+		User newUser=new User(user.getName());
+		newUser.setEmailId(user.getEmailId());
+		newUser.setPassword(user.getPassword());
+		//userDatabase.save(newUser);
+		return "signup";
+	}
+	@RequestMapping("/signupData")
+	String signupDataRead(User user,Model model) {
+		System.out.println(user.getName()+"  "+user.getEmailId()+" "+user.getPassword());
+		System.out.println("Signup Test");
+//		ArrayList<User> userData=(ArrayList<User>) userDatabase.findAll();
+		//System.out.println(userData.get(0));
+		return "signup";
+	}
+	
 }
 
 class Studentid{
